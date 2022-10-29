@@ -8,8 +8,8 @@ func _ready():
 	randomize()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	$HUD.update_special_charge($Player.special_charge)
 
 func game_over():
 	$HUD.show_game_over()

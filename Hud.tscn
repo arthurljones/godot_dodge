@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Hud.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.0431373, 0.768627, 1 )
 
 [node name="Node2D" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -48,6 +51,19 @@ text = "Start"
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="SpecialCharge" type="ProgressBar" parent="."]
+anchor_left = 0.65
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.01
+margin_left = -4.0
+margin_bottom = 32.0
+custom_styles/fg = SubResource( 2 )
+max_value = 1.0
+step = 0.001
+value = 0.5
+percent_visible = false
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

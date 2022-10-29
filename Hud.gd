@@ -30,6 +30,9 @@ func show_game_over():
 func update_score(score):
 	$ScoreLabel.text = str(score)
 
+func update_special_charge(special_charge:float):
+	$SpecialCharge.value = special_charge
+
 func _on_StartButton_pressed():
     $StartButton.hide()
     emit_signal("start_game")
