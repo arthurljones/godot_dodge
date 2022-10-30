@@ -11,13 +11,17 @@ func _ready():
 #	pass
 
 func setup():
-	show_message("Dodge the Creeps!")
+	show_message("Dodge the Creeps!", false)
 	$StartButton.show()
 
-func show_message(text):
-    $Message.text = text
-    $Message.show()
-    $MessageTimer.start()
+func show_message(text:String, temporary:bool = true):
+	if temporary:
+		$MessageTimer.start()
+	else:
+		# Stop the timer in case it's currently running
+		$MessageTimer.stop()
+	$Message.text = text
+	$Message.show()
 
 func show_game_over():
 	show_message("Game Over")
