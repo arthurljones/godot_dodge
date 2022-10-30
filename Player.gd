@@ -70,6 +70,7 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 func _on_Player_body_entered(body:Node):
+	print("player hit %s" % body.get_class())
 	hidden = true
 	special_charge = 0
 	hide()

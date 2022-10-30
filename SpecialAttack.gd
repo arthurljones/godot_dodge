@@ -27,5 +27,6 @@ func _on_AnimationPlayer_animation_finished(anim_name:String):
 
 func _on_Node2D_body_entered(body:Node):
 	# Kill enemies that touch the explosion
-	body.queue_free()
+	if body.has_method("die"):
+		body.die()
 

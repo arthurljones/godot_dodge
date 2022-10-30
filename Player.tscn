@@ -30,6 +30,7 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
+special_charge_rate = 0.5
 special_scene = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

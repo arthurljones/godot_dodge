@@ -1,6 +1,8 @@
 extends Node
 
 export var mob_scene: PackedScene
+export var mob_death_score:int = 3
+
 var score
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +55,8 @@ func _on_MobTimer_timeout():
 	var velocity = Vector2(rand_range(150.0, 250.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
 
+	# Listen for the mob's death
+	mob.connect("killed", self, "_on_mob_killed")
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 
@@ -69,3 +73,7 @@ func set_score(new_score):
 
 func _on_ResetTimer_timeout():
 	setup()
+
+func _on_mob_killed():
+	print("_on_mob_killed")
+	set_score(score + mob_death_score)
