@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Hud.gd" type="Script" id=2]
@@ -6,6 +6,12 @@
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=3]
+action = "special"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0.0431373, 0.768627, 1 )
@@ -46,6 +52,7 @@ margin_left = -184.5
 margin_top = -84.0
 margin_right = 184.5
 custom_fonts/font = SubResource( 1 )
+shortcut = SubResource( 4 )
 text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="."]

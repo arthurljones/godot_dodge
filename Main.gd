@@ -1,28 +1,35 @@
 extends Node
 
-export (PackedScene) var mob_scene
+export var mob_scene: PackedScene
 var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	setup()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$HUD.update_special_charge($Player.special_charge)
 
-func game_over():
-	$HUD.show_game_over()
-
-	$ScoreTimer.stop()
-	$MobTimer.stop()
+func setup():
+	set_score(0)
+	get_tree().call_group("mobs", "queue_free")
+	$HUD.setup()
 
 func new_game():
-	set_score(0)
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.show_message("Get Ready")
-	get_tree().call_group("mobs", "queue_free")
+	$Music.play()
+
+func game_over():
+	$HUD.show_game_over()
+	$Music.stop()
+	$DeathSound.play()
+	$ScoreTimer.stop()
+	$MobTimer.stop()
+	$ResetTimer.start()
 
 func _on_MobTimer_timeout():
 	# Create a new instance of the Mob scene.
@@ -59,3 +66,6 @@ func _on_StartTimer_timeout():
 func set_score(new_score):
 	score = new_score
 	$HUD.update_score(score)
+
+func _on_ResetTimer_timeout():
+	setup()
