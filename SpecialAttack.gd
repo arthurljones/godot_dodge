@@ -16,13 +16,13 @@ func _draw():
 	draw_circle(Vector2.ZERO, current_radius, color)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	current_radius = max_radius * animation_param
 	$CollisionShape2D.shape.radius = current_radius
 	# Force redraw to update the explosion circle
 	update()
 
-func _on_AnimationPlayer_animation_finished(anim_name:String):
+func _on_AnimationPlayer_animation_finished(_anim_name:String):
 	queue_free()
 
 func _on_Node2D_body_entered(body:Node):

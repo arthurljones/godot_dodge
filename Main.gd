@@ -11,7 +11,7 @@ func _ready():
 	setup()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	$HUD.update_special_charge($Player.special_charge)
 
 func setup():

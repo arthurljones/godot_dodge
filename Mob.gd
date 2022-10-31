@@ -22,6 +22,6 @@ func die():
 	linear_velocity = Vector2.ZERO
 	$CollisionShape2D.set_deferred("disabled", true)
 
-func _on_DeathAnim_animation_finished(anim_name:String):
+func _on_DeathAnim_animation_finished(_anim_name:String):
 	print("mob anim finish")
 	queue_free()
